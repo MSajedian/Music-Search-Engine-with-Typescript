@@ -10,17 +10,14 @@ interface RouteInfo {
 interface MusicDetailProps extends RouteComponentProps<RouteInfo> {}
 
 export interface MusicDetailState {
-  music: Music;
+  music: Music | null;
 }
 
 class MusicDetail extends Component<MusicDetailProps, MusicDetailState> {
-  // constructor(props: MusicDetailProps) {
-  // super(props);
-  //       this.state = { :  };
-  //   }
-  //   state = {
-  //     music: {},
-  //   };
+    state:MusicDetailState = {
+      music: null,
+    };
+  
   componentDidMount() {
     console.log(this.props.match.params);
     const getMusic = async () => {
@@ -54,7 +51,7 @@ class MusicDetail extends Component<MusicDetailProps, MusicDetailState> {
             <b>Title</b>
           </Col>
         </Row>
-        {this.state.music && (
+        {this.state.music ? (
           <Row className="mb-3 mt-3">
             <Col>
               <img
@@ -69,6 +66,8 @@ class MusicDetail extends Component<MusicDetailProps, MusicDetailState> {
               <p>{this.state.music.title_short}</p>
             </Col>
           </Row>
+        ) : (
+          <p>this.state.music is not ready</p>
         )}
       </Container>
     );

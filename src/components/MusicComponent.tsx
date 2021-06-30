@@ -7,7 +7,6 @@ import { RouteComponentProps } from "react-router-dom";
 
 interface MusicProps extends RouteComponentProps {
   musics: Music[];
-
 }
 
 // export interface MusicProps {
@@ -19,11 +18,9 @@ export interface MusicState {}
 class MusicComponent extends Component<MusicProps, MusicState> {
   // state = { :  }
 
-
   render() {
     return (
-      
-      <Container className="my-5" >
+      <Container className="my-5">
         <Row>
           <Col>
             <b>Picture</b>
@@ -36,7 +33,12 @@ class MusicComponent extends Component<MusicProps, MusicState> {
           </Col>
         </Row>
         {this.props.musics.map((music) => (
-          <Row className="mb-3 mt-3" onClick={() => { this.props.history.push(`/music-detail/${music.id}`) }}>
+          <Row
+            className="mb-3 mt-3"
+            onClick={() => {
+              this.props.history.push(`/music-detail/${music.id}`);
+            }}
+          >
             <Col>
               <img src={music.artist.picture} alt={music.artist.name} />
             </Col>

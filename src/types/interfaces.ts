@@ -67,6 +67,3 @@ export interface Music {
   };
   type: string;
 }
-export interface SingleMusic{
-  
-}
