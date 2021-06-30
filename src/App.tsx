@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import React from "react";
+import { BrowserRouter as Router, Switch, Link } from "react-router-dom";
+import { Route } from "react-router-dom";
+import FormComponent from "./components/FormComponent";
+import MusicDetail from "./components/MusicDetail";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Main</Link>
+            </li>
+          </ul>
+        </nav>
+        <hr />
+        <Switch>
+          <Route path="/" exact render={(routerProps) => <FormComponent {...routerProps}/>} />
+          <Route path="/music-detail/:id" exact render={(routerProps) => <MusicDetail {...routerProps}/>} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
-
-export default App;
